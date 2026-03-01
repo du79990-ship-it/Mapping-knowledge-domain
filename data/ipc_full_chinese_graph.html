@@ -1,0 +1,282 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+                <link href="lib/tom-select/tom-select.css" rel="stylesheet">
+                <script src="lib/tom-select/tom-select.complete.min.js"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 95vh;
+                 background-color: #f7f9ff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+                <div id="select-menu" class="card-header">
+                    <div class="row no-gutters">
+                        <div class="col-10 pb-2">
+                            <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="selectNode([value]);"
+                            id="select-node"
+                            placeholder="Select node..."
+                            >
+                                <option selected>Select a Node by ID</option>
+                                
+                                    <option value="A24B">A24B</option>
+                                
+                                    <option value="A24B 1/00">A24B 1/00</option>
+                                
+                                    <option value="A24B 1/04">A24B 1/04</option>
+                                
+                                    <option value="A24B 1/10">A24B 1/10</option>
+                                
+                                    <option value="A24B 3/00">A24B 3/00</option>
+                                
+                                    <option value="A24B 3/02">A24B 3/02</option>
+                                
+                                    <option value="A24B 3/04">A24B 3/04</option>
+                                
+                                    <option value="A24B 3/08">A24B 3/08</option>
+                                
+                                    <option value="A24B 3/10">A24B 3/10</option>
+                                
+                                    <option value="A24B 3/12">A24B 3/12</option>
+                                
+                                    <option value="A24B 3/14">A24B 3/14</option>
+                                
+                                    <option value="A24B 7/00">A24B 7/00</option>
+                                
+                                    <option value="A24B 7/14">A24B 7/14</option>
+                                
+                                    <option value="A24B 9/00">A24B 9/00</option>
+                                
+                                    <option value="A24B 13/00">A24B 13/00</option>
+                                
+                                    <option value="A24B 13/02">A24B 13/02</option>
+                                
+                                    <option value="A24B 15/00">A24B 15/00</option>
+                                
+                                    <option value="A24B 15/10">A24B 15/10</option>
+                                
+                                    <option value="A24B 15/12">A24B 15/12</option>
+                                
+                                    <option value="A24B 15/14">A24B 15/14</option>
+                                
+                                    <option value="A24B 15/16">A24B 15/16</option>
+                                
+                                    <option value="A24B 15/18">A24B 15/18</option>
+                                
+                                    <option value="A24B 15/24">A24B 15/24</option>
+                                
+                                    <option value="A24D 1/18">A24D 1/18</option>
+                                
+                                    <option value="A24C 5/14">A24C 5/14</option>
+                                
+                                    <option value="A24C 1/02">A24C 1/02</option>
+                                
+                                    <option value="F24F 8/97">F24F 8/97</option>
+                                
+                                    <option value="A24F 23/02">A24F 23/02</option>
+                                
+                                    <option value="A01H 6/82">A01H 6/82</option>
+                                
+                                    <option value="A24F 9/02">A24F 9/02</option>
+                                
+                                    <option value="A24F 1/24">A24F 1/24</option>
+                                
+                                    <option value="A24F 23/00">A24F 23/00</option>
+                                
+                                    <option value="A24C 5/54">A24C 5/54</option>
+                                
+                                    <option value="A24C 5/34">A24C 5/34</option>
+                                
+                                    <option value="A24C 1/08">A24C 1/08</option>
+                                
+                                    <option value="A01D 45/16">A01D 45/16</option>
+                                
+                                    <option value="A01N 65/38">A01N 65/38</option>
+                                
+                                    <option value="F24F 110/62">F24F 110/62</option>
+                                
+                                    <option value="A01G 22/45">A01G 22/45</option>
+                                
+                                    <option value="A61P 25/34">A61P 25/34</option>
+                                
+                                    <option value="A61K 36/81">A61K 36/81</option>
+                                
+                                    <option value="A24F 25/00">A24F 25/00</option>
+                                
+                                    <option value="A24B 1/02">A24B 1/02</option>
+                                
+                                    <option value="A24B 1/06">A24B 1/06</option>
+                                
+                                    <option value="A24B 1/08">A24B 1/08</option>
+                                
+                                    <option value="A24B 3/06">A24B 3/06</option>
+                                
+                                    <option value="A24B 3/07">A24B 3/07</option>
+                                
+                                    <option value="A24B 3/16">A24B 3/16</option>
+                                
+                                    <option value="A24B 3/18">A24B 3/18</option>
+                                
+                                    <option value="A24B 5/00">A24B 5/00</option>
+                                
+                                    <option value="A24B 5/02">A24B 5/02</option>
+                                
+                                    <option value="A24B 5/04">A24B 5/04</option>
+                                
+                                    <option value="A24B 5/06">A24B 5/06</option>
+                                
+                                    <option value="A24B 5/08">A24B 5/08</option>
+                                
+                                    <option value="A24B 5/10">A24B 5/10</option>
+                                
+                                    <option value="A24B 5/12">A24B 5/12</option>
+                                
+                                    <option value="A24B 5/14">A24B 5/14</option>
+                                
+                                    <option value="A24B 5/16">A24B 5/16</option>
+                                
+                                    <option value="A24B 7/02">A24B 7/02</option>
+                                
+                                    <option value="A24B 7/04">A24B 7/04</option>
+                                
+                                    <option value="A24B 7/06">A24B 7/06</option>
+                                
+                            </select>
+                        </div>
+                        <div class="col-2 pb-2">
+                            <button type="button" class="btn btn-primary btn-block" onclick="neighbourhoodHighlight({nodes: []});">Reset Selection</button>
+                        </div>
+                    </div>
+                </div>
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+                  new TomSelect("#select-node",{
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      }
+                  });
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": {"background": "#004085", "border": "#002752"}, "font": {"color": "#333333"}, "id": "A24B", "label": "ROOT\nA24B\n\u5377\u70df\u6216\u56bc\u70df\u7684\u5236\u9020", "shape": "box", "size": 50, "title": "\u6838\u5fc3\u5927\u7c7b: \u5377\u70df\u6216\u56bc\u70df\u7684\u5236\u9020\u6216\u5236\u5907\uff1b\u70df\u8349\uff1b\u9f3b\u70df\n\u5438\u70df\u6216\u56bc\u70df\u7684\u5236\u9020\u6216\u5236\u5907\uff1b\u70df\u8349\uff1b\u9f3b\u70df"}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "A24B 1/00", "label": "A24B 1/00\n\u79cd\u690d\u56ed\u5185\u5236\u5907\u70df\u8349", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24B 1/00\n\u3010\u4e2d\u6587\u3011: \u79cd\u690d\u56ed\u5185\u5236\u5907\u70df\u8349\n----------------------\n\u3010\u539f\u6587\u3011: \u5728\u79cd\u690d\u56ed\u5185\u5236\u5907\u70df\u8349[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "A24B 1/04", "label": "A24B 1/04\n\u7b5b\u9009\u3001\u5206\u7c7b\u3001\u6e05\u6d01\u6216\u53bb..", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24B 1/04\n\u3010\u4e2d\u6587\u3011: \u7b5b\u9009\u3001\u5206\u7c7b\u3001\u6e05\u6d01\u6216\u53bb\u9664\u70df\u8349\u4e2d\u7684\u6742\u8d28\n----------------------\n\u3010\u539f\u6587\u3011: . \u7b5b\u9009\uff0c\u5206\u7c7b\uff0c\u6e05\u6d01\u6216\u53bb\u9664\u70df\u8349\u4e2d\u7684\u6742\u8d28[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "A24B 1/10", "label": "A24B 1/10\n\u5305\u88c5\u6216\u538b\u7d27\u70df\u8349", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24B 1/10\n\u3010\u4e2d\u6587\u3011: \u5305\u88c5\u6216\u538b\u7d27\u70df\u8349\n----------------------\n\u3010\u539f\u6587\u3011: . \u5305\u88c5\u6216\u538b\u7d27\u70df\u8349[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "A24B 3/00", "label": "A24B 3/00\n\u5728\u70df\u5382\u5185\u5236\u5907\u70df\u8349", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24B 3/00\n\u3010\u4e2d\u6587\u3011: \u5728\u70df\u5382\u5185\u5236\u5907\u70df\u8349\n----------------------\n\u3010\u539f\u6587\u3011: \u5728\u70df\u5382\u5185\u5236\u5907\u70df\u8349[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "A24B 3/02", "label": "A24B 3/02\nA24B 3/02 ..", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24B 3/02\n\u3010\u4e2d\u6587\u3011: A24B 3/02 \u4f7f\u5305\u88c5\u7684\u751f\u70df\u8349\u56de\u6f6e\n----------------------\n\u3010\u539f\u6587\u3011: . \u4f7f\u5305\u88c5\u7684\u751f\u70df\u8349\u56de\u6f6e[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "A24B 3/04", "label": "A24B 3/04\nA24B 3/04", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24B 3/04\n\u3010\u4e2d\u6587\u3011: A24B 3/04\n----------------------\n\u3010\u539f\u6587\u3011: . \u56de\u6f6e\u6216\u5e72\u71e5\u6210\u6346\u7684\u70df\u8349\u6216\u70df\u4e1d\uff08A24B3/12\u4f18\u5148\uff09[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "A24B 3/08", "label": "A24B 3/08\n\u6df7\u5408\u70df\u8349", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24B 3/08\n\u3010\u4e2d\u6587\u3011: \u6df7\u5408\u70df\u8349\n----------------------\n\u3010\u539f\u6587\u3011: . \u63ba\u6df7\u70df\u8349[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "A24B 3/10", "label": "A24B 3/10\n\u70e4\u5236\u6216\u51b7\u5374\u70df\u8349", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24B 3/10\n\u3010\u4e2d\u6587\u3011: \u70e4\u5236\u6216\u51b7\u5374\u70df\u8349\n----------------------\n\u3010\u539f\u6587\u3011: . \u70e4\u5236\u6216\u51b7\u5374\u70df\u8349[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "A24B 3/12", "label": "A24B 3/12\n\u70df\u8349\u7684\u84b8\u3001\u8c03\u5236\u6216\u52a0\u9999", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24B 3/12\n\u3010\u4e2d\u6587\u3011: \u70df\u8349\u7684\u84b8\u3001\u8c03\u5236\u6216\u52a0\u9999\n----------------------\n\u3010\u539f\u6587\u3011: . \u70df\u8349\u7684\u84b8\u3001\u8c03\u5236\u6216\u52a0\u9999[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "A24B 3/14", "label": "A24B 3/14\n\u5f62\u6210\u518d\u5236\u70df\u8349\u4ea7\u54c1\uff0c\u4f8b..", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24B 3/14\n\u3010\u4e2d\u6587\u3011: \u5f62\u6210\u518d\u5236\u70df\u8349\u4ea7\u54c1\uff0c\u4f8b\u5982\u5916\u5305\u70df\u53f6\u6750\u6599\u3001\u70df\u7eb8\u3001\u4eff\u9020\u70df\u53f6\u3001\u70df\u6761\u3001\u70df\n----------------------\n\u3010\u539f\u6587\u3011: . \u5f62\u6210\u518d\u5236\u70df\u8349\u4ea7\u54c1\uff0c\u4f8b\u5982\u5916\u5305\u70df\u53f6\u6750\u6599\u3001\u70df\u7eb8\u3001\u4eff\u9020\u70df\u53f6\u3001\u70df\u6761\u3001\u70df\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "A24B 7/00", "label": "A24B 7/00\n\u5207\u5272\u70df\u8349", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24B 7/00\n\u3010\u4e2d\u6587\u3011: \u5207\u5272\u70df\u8349\n----------------------\n\u3010\u539f\u6587\u3011: \u5207\u5272\u70df\u8349[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "A24B 7/14", "label": "A24B 7/14\n\u70df\u8349\u5207\u5272\u8bbe\u5907\u7684\u8fdb\u6599\u6216..", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24B 7/14\n\u3010\u4e2d\u6587\u3011: \u70df\u8349\u5207\u5272\u8bbe\u5907\u7684\u8fdb\u6599\u6216\u63a7\u5236\u88c5\u7f6e\n----------------------\n\u3010\u539f\u6587\u3011: . \u70df\u8349\u5207\u5272\u8bbe\u5907\u7684\u8fdb\u6599\u6216\u63a7\u5236\u88c5\u7f6e[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "A24B 9/00", "label": "A24B 9/00\n\u70df\u8349\u4ea7\u54c1\u542b\u6c34\u91cf\u7684\u63a7\u5236..", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24B 9/00\n\u3010\u4e2d\u6587\u3011: \u70df\u8349\u4ea7\u54c1\u542b\u6c34\u91cf\u7684\u63a7\u5236\uff0c\u4f8b\u5982\u96ea\u8304\u70df\u3001\u7eb8\u70df\u3001\u6597\u70df\n----------------------\n\u3010\u539f\u6587\u3011: \u70df\u8349\u4ea7\u54c1\u542b\u6c34\u91cf\u7684\u63a7\u5236\uff0c\u4f8b\u5982\u96ea\u8304\u70df\u3001\u7eb8\u70df\u3001\u6597\u70df\uff08\u5438\u70df\u8005\u7528\u4ee5\u63a7\u5236\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "A24B 13/00", "label": "A24B 13/00\n\u70df\u6597\u7528\u70df\u8349\u3001\u96ea\u8304\u7528\u70df..", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24B 13/00\n\u3010\u4e2d\u6587\u3011: \u70df\u6597\u7528\u70df\u8349\u3001\u96ea\u8304\u7528\u70df\u8349\uff0c\u5982\u96ea\u8304\u586b\u5145\u70df\u6216\u7eb8\u70df\u7528\u70df\u8349\uff1b\u56bc\u70df\uff1b\n----------------------\n\u3010\u539f\u6587\u3011: \u70df\u6597\u7528\u70df\u8349\u3001\u96ea\u8304\u7528\u70df\u8349\uff0c\u4f8b\u5982\u96ea\u8304\u586b\u5145\u70df\u3001\u6216\u7eb8\u70df\u7528\u70df\u8349\uff1b\u56bc\u70df\uff1b\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "A24B 13/02", "label": "A24B 13/02\n\u70df\u8349\u7247\u6216\u5c51", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24B 13/02\n\u3010\u4e2d\u6587\u3011: \u70df\u8349\u7247\u6216\u5c51\n----------------------\n\u3010\u539f\u6587\u3011: . \u70df\u8349\u7684\u7247\u6216\u5c51[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "A24B 15/00", "label": "A24B 15/00\n\u70df\u8349\u7684\u5316\u5b66\u7279\u6027\u6216\u5904\u7406..", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24B 15/00\n\u3010\u4e2d\u6587\u3011: \u70df\u8349\u7684\u5316\u5b66\u7279\u6027\u6216\u5904\u7406\uff1b\u70df\u8349\u4ee3\u7528\u54c1\uff0c\u4f8b\u5982\u6db2\u4f53\u5f62\u5f0f\n----------------------\n\u3010\u539f\u6587\u3011: \u70df\u8349\u7684\u5316\u5b66\u7279\u6027\u6216\u5904\u7406\uff1b\u70df\u8349\u4ee3\u7528\u54c1\uff0c\u4f8b\u5982\uff0c\u6db2\u4f53\u5f62\u5f0f\u7684(A24B3/00\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "A24B 15/10", "label": "A24B 15/10\nA24B 15/10", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24B 15/10\n\u3010\u4e2d\u6587\u3011: A24B 15/10\n----------------------\n\u3010\u539f\u6587\u3011: . \u70df\u8349\u5236\u54c1\u6216\u70df\u8349\u4ee3\u7528\u54c1\u7684\u5316\u5b66\u7279\u5f81[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "A24B 15/12", "label": "A24B 15/12\n\u518d\u5236\u70df\u8349", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24B 15/12\n\u3010\u4e2d\u6587\u3011: \u518d\u5236\u70df\u8349\n----------------------\n\u3010\u539f\u6587\u3011: .. \u518d\u5236\u70df\u8349\u7684[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "A24B 15/14", "label": "A24B 15/14\n\u7531\u70df\u8349\u548c\u4e00\u79cd\u5e76\u975e\u6765\u81ea..", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24B 15/14\n\u3010\u4e2d\u6587\u3011: \u7531\u70df\u8349\u548c\u4e00\u79cd\u5e76\u975e\u6765\u81ea\u70df\u8349\u7684\u9ecf\u7ed3\u5242\u5236\u6210\n----------------------\n\u3010\u539f\u6587\u3011: ... \u7531\u70df\u8349\u548c\u4e00\u79cd\u5e76\u975e\u6765\u81ea\u70df\u8349\u7684\u9ecf\u7ed3\u5242\u5236\u6210[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "A24B 15/16", "label": "A24B 15/16\n\u70df\u8349\u4ee3\u7528\u54c1", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24B 15/16\n\u3010\u4e2d\u6587\u3011: \u70df\u8349\u4ee3\u7528\u54c1\n----------------------\n\u3010\u539f\u6587\u3011: .. \u70df\u8349\u4ee3\u7528\u54c1\u7684[2020.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "A24B 15/18", "label": "A24B 15/18\n\u70df\u8349\u5236\u54c1\u6216\u70df\u8349\u4ee3\u7528\u54c1..", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24B 15/18\n\u3010\u4e2d\u6587\u3011: \u70df\u8349\u5236\u54c1\u6216\u70df\u8349\u4ee3\u7528\u54c1\u7684\u5904\u7406\n----------------------\n\u3010\u539f\u6587\u3011: . \u70df\u8349\u5236\u54c1\u6216\u70df\u8349\u4ee3\u7528\u54c1\u7684\u5904\u7406[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "A24B 15/24", "label": "A24B 15/24\n\u63d0\u53d6\u5e94\u7528\uff1b\u70df\u8349\u63d0\u53d6\u6db2", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24B 15/24\n\u3010\u4e2d\u6587\u3011: \u63d0\u53d6\u5e94\u7528\uff1b\u70df\u8349\u63d0\u53d6\u6db2\n----------------------\n\u3010\u539f\u6587\u3011: .. \u5e94\u7528\u63d0\u53d6\uff1b\u70df\u8349\u8403\u53d6\u6db2[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "A24D 1/18", "label": "A24D 1/18\nA24D 1/18", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24D 1/18\n\u3010\u4e2d\u6587\u3011: A24D 1/18\n----------------------\n\u3010\u539f\u6587\u3011: . \u9009\u62e9\u9664\u70df\u8349\u4ee5\u5916\u9002\u4e8e\u5438\u70df\u7528\u7684\u6750\u6599[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "A24C 5/14", "label": "A24C 5/14\n\u8fde\u7eed\u6746\u5f0f\u673a\u5668", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24C 5/14\n\u3010\u4e2d\u6587\u3011: \u8fde\u7eed\u6746\u5f0f\u673a\u5668\n----------------------\n\u3010\u539f\u6587\u3011: . \u8fde\u7eed\u6746\u5f0f\u673a\u5668\uff08\u70df\u8349\u8fdb\u6599\u88c5\u7f6e\u5165A24C5/39\uff09[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "A24C 1/02", "label": "A24C 1/02\n\u5e26\u6709\u6216\u4e0d\u5e26\u6709\u8ba1\u91cf\u5206\u914d..", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24C 1/02\n\u3010\u4e2d\u6587\u3011: \u5e26\u6709\u6216\u4e0d\u5e26\u6709\u8ba1\u91cf\u5206\u914d\u88c5\u7f6e\u7684\u70df\u8349\u8fdb\u6599\u8bbe\u5907\n----------------------\n\u3010\u539f\u6587\u3011: . \u5e26\u6709\u6216\u4e0d\u5e26\u6709\u8ba1\u91cf\u5206\u914d\u88c5\u7f6e\u7684\u70df\u8349\u8fdb\u6599\u8bbe\u5907[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "F24F 8/97", "label": "F24F 8/97\n\u53bb\u9664\u70df\u8349\u70df\u6c14", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: F24F 8/97\n\u3010\u4e2d\u6587\u3011: \u53bb\u9664\u70df\u8349\u70df\u6c14\n----------------------\n\u3010\u539f\u6587\u3011: .. \u53bb\u9664\u70df\u8349\u70df\u6c14[2021.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "A24F 23/02", "label": "A24F 23/02\n\u70df\u8349\u888b", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24F 23/02\n\u3010\u4e2d\u6587\u3011: \u70df\u8349\u888b\n----------------------\n\u3010\u539f\u6587\u3011: . \u70df\u8349\u888b[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "A01H 6/82", "label": "A01H 6/82\n\u8304\u79d1\uff0c\u4f8b\u5982\u8fa3\u6912\u3001\u70df\u8349..", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A01H 6/82\n\u3010\u4e2d\u6587\u3011: \u8304\u79d1\uff0c\u4f8b\u5982\u8fa3\u6912\u3001\u70df\u8349\u3001\u9a6c\u94c3\u85af\u3001\u756a\u8304\u6216\u8304\u5b50\n----------------------\n\u3010\u539f\u6587\u3011: . \u8304\u79d1\uff0c\u4f8b\u5982\u8fa3\u6912\u3001\u70df\u8349\u3001\u9a6c\u94c3\u85af\u3001\u756a\u8304\u6216\u8304\u5b50[2018.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "A24F 9/02", "label": "A24F 9/02\n\u70df\u6597\u7528\u585e\u70df\u5177", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24F 9/02\n\u3010\u4e2d\u6587\u3011: \u70df\u6597\u7528\u585e\u70df\u5177\n----------------------\n\u3010\u539f\u6587\u3011: . \u70df\u6597\u7528\u7684\u585e\u70df\u5177\uff0c\u5373\u586b\u585e\u70df\u8349\u5165\u6597\u7684\u88c5\u7f6e\uff08\u7ed3\u5408\u70df\u76d2\u7684\u5165A24F23/04\uff09\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "A24F 1/24", "label": "A24F 1/24\n\u70b9\u71c3\u70df\u8349\u7684\u4e0b\u65b9", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24F 1/24\n\u3010\u4e2d\u6587\u3011: \u70b9\u71c3\u70df\u8349\u7684\u4e0b\u65b9\n----------------------\n\u3010\u539f\u6587\u3011: . \u4ece\u4e0b\u9762\u70b9\u71c3\u70df\u8349\u7684[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "A24F 23/00", "label": "A24F 23/00\n\u70df\u8349\u3001\u9f3b\u70df\u6216\u56bc\u70df\u76d2", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24F 23/00\n\u3010\u4e2d\u6587\u3011: \u70df\u8349\u3001\u9f3b\u70df\u6216\u56bc\u70df\u76d2\n----------------------\n\u3010\u539f\u6587\u3011: \u70df\u8349\u3001\u9f3b\u70df\u6216\u56bc\u70df\u76d2[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "A24C 5/54", "label": "A24C 5/54\n\u5377\u70df\u7eb8\u7ba1\u5728\u88c5\u586b\u70df\u8349\u540e..", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24C 5/54\n\u3010\u4e2d\u6587\u3011: \u5377\u70df\u7eb8\u7ba1\u5728\u88c5\u586b\u70df\u8349\u540e\u4e24\u8fb9\u6298\u53e0[2006.01]\n----------------------\n\u3010\u539f\u6587\u3011: . \u5728\u88c5\u586b\u70df\u8349\u540e\uff0c\u5c06\u7eb8\u70df\u7eb8\u7ba1\u4e24\u8fb9\u6298\u53e0[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "A24C 5/34", "label": "A24C 5/34\n\u68c0\u67e5\u5377\u70df\u6216\u70df\u5634\uff0c\u4f8b\u5982..", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24C 5/34\n\u3010\u4e2d\u6587\u3011: \u68c0\u67e5\u5377\u70df\u6216\u70df\u5634\uff0c\u4f8b\u5982\uff0c\u4e3a\u4e86\u8c03\u8282\u70df\u8349\u8fdb\u6599\uff1b\u9664\u53bb\u4e0d\u5408\u683c\u7684\u5377\u70df\n----------------------\n\u3010\u539f\u6587\u3011: .. \u68c0\u67e5\u7eb8\u70df\u6216\u70df\u6746\uff0c\u4f8b\u5982\uff0c\u4e3a\u4e86\u8c03\u8282\u70df\u8349\u8fdb\u6599\uff1b\u9664\u53bb\u4e0d\u5408\u683c\u7684\u7eb8\u70df\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "A24C 1/08", "label": "A24C 1/08\n\u5236\u9020\u70df\u8349\u675f", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24C 1/08\n\u3010\u4e2d\u6587\u3011: \u5236\u9020\u70df\u8349\u675f\n----------------------\n\u3010\u539f\u6587\u3011: . \u5236\u9020\u70df\u8349\u675f[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "A01D 45/16", "label": "A01D 45/16\n\u70df\u8349\u7684", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A01D 45/16\n\u3010\u4e2d\u6587\u3011: \u70df\u8349\u7684\n----------------------\n\u3010\u539f\u6587\u3011: . \u70df\u8349\u7684[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "A01N 65/38", "label": "A01N 65/38\n\u8304\u79d1\uff0c\u5982\u8304\u5b50\u3001\u756a\u8304\u3001..", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A01N 65/38\n\u3010\u4e2d\u6587\u3011: \u8304\u79d1\uff0c\u5982\u8304\u5b50\u3001\u756a\u8304\u3001\u70df\u8349\u6216\u7ea2\u8fa3\u6912\n----------------------\n\u3010\u539f\u6587\u3011: .. \u8304\u79d1\uff0c\u4f8b\u5982\u8304\uff0c\u756a\u8304\uff0c\u70df\u8349\u6216\u7ea2\u8fa3\u6912[2009.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "F24F 110/62", "label": "F24F 110/62\n\u70df\u8349\u70df\u6c14", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: F24F 110/62\n\u3010\u4e2d\u6587\u3011: \u70df\u8349\u70df\u6c14\n----------------------\n\u3010\u539f\u6587\u3011: .. \u70df\u8349\u70df\u6c14[2018.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "A01G 22/45", "label": "A01G 22/45\n\u70df\u8349", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A01G 22/45\n\u3010\u4e2d\u6587\u3011: \u70df\u8349\n----------------------\n\u3010\u539f\u6587\u3011: . \u70df\u8349[2018.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "A61P 25/34", "label": "A61P 25/34\n\u70df\u8349\u6ee5\u7528", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A61P 25/34\n\u3010\u4e2d\u6587\u3011: \u70df\u8349\u6ee5\u7528\n----------------------\n\u3010\u539f\u6587\u3011: .. \u70df\u8349\u6ee5\u7528[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "A61K 36/81", "label": "A61K 36/81\n\u8304\u79d1\uff0c\u5982\u70df\u8349\u3001\u9f99\u8475\u3001..", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A61K 36/81\n\u3010\u4e2d\u6587\u3011: \u8304\u79d1\uff0c\u5982\u70df\u8349\u3001\u9f99\u8475\u3001\u756a\u8304\u3001\u98a0\u8304\u3001\u8fa3\u6912\u6216\u66fc\u9640\u7f57[2006.01]\n----------------------\n\u3010\u539f\u6587\u3011: ... \u8304\u79d1\uff0c\u4f8b\u5982\u70df\u8349\uff0c\u9f99\u8475\uff0c\u756a\u8304\uff0c\u98a0\u8304\uff0c\u8fa3\u6912\u6216\u66fc\u9640\u7f57[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "A24F 25/00", "label": "A24F 25/00\n\u63a7\u5236\u96ea\u8304\u3001\u7eb8\u70df\u6216\u70df\u8349..", "shape": "box", "size": 30, "title": "\u3010\u4ee3\u7801\u3011: A24F 25/00\n\u3010\u4e2d\u6587\u3011: \u63a7\u5236\u96ea\u8304\u3001\u7eb8\u70df\u6216\u70df\u8349\u6e7f\u5ea6\u6216\u9999\u5473\u7684\u88c5\u7f6e\n----------------------\n\u3010\u539f\u6587\u3011: \u5438\u70df\u8005\u7528\u4ee5\u63a7\u5236\u96ea\u8304\u3001\u7eb8\u70df\u6216\u70df\u8349\u7684\u6e7f\u5ea6\u6216\u5176\u9999\u5473\u7684\u88c5\u7f6e[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#e9ecef", "border": "#adb5bd"}, "font": {"color": "#333333"}, "id": "A24B 1/02", "label": "A24B 1/02\n.", "shape": "box", "size": 20, "title": "\u3010\u4ee3\u7801\u3011: A24B 1/02\n\u3010\u4e2d\u6587\u3011: .\n----------------------\n\u3010\u539f\u6587\u3011: .\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#e9ecef", "border": "#adb5bd"}, "font": {"color": "#333333"}, "id": "A24B 1/06", "label": "A24B 1/06\n\u6346\u7ed1\u70df\u53f6", "shape": "box", "size": 20, "title": "\u3010\u4ee3\u7801\u3011: A24B 1/06\n\u3010\u4e2d\u6587\u3011: \u6346\u7ed1\u70df\u53f6\n----------------------\n\u3010\u539f\u6587\u3011: . \u6346\u7ed1\u70df\u53f6[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#e9ecef", "border": "#adb5bd"}, "font": {"color": "#333333"}, "id": "A24B 1/08", "label": "A24B 1/08\n\u70df\u53f6\u60ac\u6302\u88c5\u7f6e", "shape": "box", "size": 20, "title": "\u3010\u4ee3\u7801\u3011: A24B 1/08\n\u3010\u4e2d\u6587\u3011: \u70df\u53f6\u60ac\u6302\u88c5\u7f6e\n----------------------\n\u3010\u539f\u6587\u3011: . \u70df\u53f6\u7528\u60ac\u6302\u88c5\u7f6e[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#e9ecef", "border": "#adb5bd"}, "font": {"color": "#333333"}, "id": "A24B 3/06", "label": "A24B 3/06\n\u677e\u89e3\u70df\u53f6\u6216\u70df\u4e1d", "shape": "box", "size": 20, "title": "\u3010\u4ee3\u7801\u3011: A24B 3/06\n\u3010\u4e2d\u6587\u3011: \u677e\u89e3\u70df\u53f6\u6216\u70df\u4e1d\n----------------------\n\u3010\u539f\u6587\u3011: . \u677e\u89e3\u70df\u53f6\u6216\u70df\u4e1d\uff08A24B3/07\u4f18\u5148\uff09[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#e9ecef", "border": "#adb5bd"}, "font": {"color": "#333333"}, "id": "A24B 3/07", "label": "A24B 3/07\n\u5207\u5272\u6216\u53bb\u9664\u7c98\u8fde\u7684\u70df\u53f6..", "shape": "box", "size": 20, "title": "\u3010\u4ee3\u7801\u3011: A24B 3/07\n\u3010\u4e2d\u6587\u3011: \u5207\u5272\u6216\u53bb\u9664\u7c98\u8fde\u7684\u70df\u53f6\uff1b\u5207\u9664\u70df\u67c4\n----------------------\n\u3010\u539f\u6587\u3011: . \u5207\u5272\u6216\u53bb\u9664\u7c98\u8fde\u7684\u70df\u53f6\uff1b\u5207\u9664\u70df\u67c4[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#e9ecef", "border": "#adb5bd"}, "font": {"color": "#333333"}, "id": "A24B 3/16", "label": "A24B 3/16\n\u70df\u53f6\u5206\u7c7b\u6216\u6392\u5217", "shape": "box", "size": 20, "title": "\u3010\u4ee3\u7801\u3011: A24B 3/16\n\u3010\u4e2d\u6587\u3011: \u70df\u53f6\u5206\u7c7b\u6216\u6392\u5217\n----------------------\n\u3010\u539f\u6587\u3011: . \u5206\u7c7b\u6216\u6392\u5217\u70df\u53f6[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#e9ecef", "border": "#adb5bd"}, "font": {"color": "#333333"}, "id": "A24B 3/18", "label": "A24B 3/18\n\u70df\u53f6\u7684\u5176\u4ed6\u5904\u7406\uff0c\u5982\u81a8..", "shape": "box", "size": 20, "title": "\u3010\u4ee3\u7801\u3011: A24B 3/18\n\u3010\u4e2d\u6587\u3011: \u70df\u53f6\u7684\u5176\u4ed6\u5904\u7406\uff0c\u5982\u81a8\u5316\u3001\u5377\u66f2\u3001\u6e05\u6d01\n----------------------\n\u3010\u539f\u6587\u3011: . \u70df\u53f6\u7684\u5176\u4ed6\u5904\u7406\uff0c\u4f8b\u5982\u81a8\u5316\u3001\u5377\u66f2\u3001\u6e05\u6d01[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#e9ecef", "border": "#adb5bd"}, "font": {"color": "#333333"}, "id": "A24B 5/00", "label": "A24B 5/00\n\u70df\u53f6\u9664\u6897\uff1b\u5904\u7406\u70df\u6897\u6216..", "shape": "box", "size": 20, "title": "\u3010\u4ee3\u7801\u3011: A24B 5/00\n\u3010\u4e2d\u6587\u3011: \u70df\u53f6\u9664\u6897\uff1b\u5904\u7406\u70df\u6897\u6216\u53f6\u808b\n----------------------\n\u3010\u539f\u6587\u3011: \u70df\u53f6\u9664\u6897\uff1b\u5904\u7406\u70df\u6897\u6216\u53f6\u808b[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#e9ecef", "border": "#adb5bd"}, "font": {"color": "#333333"}, "id": "A24B 5/02", "label": "A24B 5/02\n. \u62d4\u51fa\u70df\u6897", "shape": "box", "size": 20, "title": "\u3010\u4ee3\u7801\u3011: A24B 5/02\n\u3010\u4e2d\u6587\u3011: . \u62d4\u51fa\u70df\u6897\n----------------------\n\u3010\u539f\u6587\u3011: . \u901a\u8fc7\u62d4\u51fa\u70df\u6897[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#e9ecef", "border": "#adb5bd"}, "font": {"color": "#333333"}, "id": "A24B 5/04", "label": "A24B 5/04\n\u5207\u53bb\u70df\u6897", "shape": "box", "size": 20, "title": "\u3010\u4ee3\u7801\u3011: A24B 5/04\n\u3010\u4e2d\u6587\u3011: \u5207\u53bb\u70df\u6897\n----------------------\n\u3010\u539f\u6587\u3011: . \u901a\u8fc7\u5207\u53bb\u70df\u6897[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#e9ecef", "border": "#adb5bd"}, "font": {"color": "#333333"}, "id": "A24B 5/06", "label": "A24B 5/06\n\u70df\u53f6\u90e8\u5206\u7684\u5265\u79bb [2..", "shape": "box", "size": 20, "title": "\u3010\u4ee3\u7801\u3011: A24B 5/06\n\u3010\u4e2d\u6587\u3011: \u70df\u53f6\u90e8\u5206\u7684\u5265\u79bb [2006.01]\n----------------------\n\u3010\u539f\u6587\u3011: . \u901a\u8fc7\u5265\u53bb\u70df\u6897\u7684\u70df\u53f6\u90e8\u5206[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#e9ecef", "border": "#adb5bd"}, "font": {"color": "#333333"}, "id": "A24B 5/08", "label": "A24B 5/08\nA24B 5/08", "shape": "box", "size": 20, "title": "\u3010\u4ee3\u7801\u3011: A24B 5/08\n\u3010\u4e2d\u6587\u3011: A24B 5/08\n----------------------\n\u3010\u539f\u6587\u3011: . \u901a\u8fc7\u5207\u53bb\u3001\u522e\u53bb\u3001\u538b\u5e73\u70df\u6897\u6216\u53f6\u808b\u7684\u7c97\u539a\u90e8\u5206[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#e9ecef", "border": "#adb5bd"}, "font": {"color": "#333333"}, "id": "A24B 5/10", "label": "A24B 5/10\nA24B 5/10", "shape": "box", "size": 20, "title": "\u3010\u4ee3\u7801\u3011: A24B 5/10\n\u3010\u4e2d\u6587\u3011: A24B 5/10\n----------------------\n\u3010\u539f\u6587\u3011: . \u901a\u8fc7\u538b\u788e\u70df\u53f6\u968f\u540e\u5206\u79bb[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#e9ecef", "border": "#adb5bd"}, "font": {"color": "#333333"}, "id": "A24B 5/12", "label": "A24B 5/12\n\u9664\u6897\u7684\u8f85\u52a9\u88c5\u7f6e", "shape": "box", "size": 20, "title": "\u3010\u4ee3\u7801\u3011: A24B 5/12\n\u3010\u4e2d\u6587\u3011: \u9664\u6897\u7684\u8f85\u52a9\u88c5\u7f6e\n----------------------\n\u3010\u539f\u6587\u3011: . \u9664\u6897\u7684\u8f85\u52a9\u88c5\u7f6e[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#e9ecef", "border": "#adb5bd"}, "font": {"color": "#333333"}, "id": "A24B 5/14", "label": "A24B 5/14\n\u4f7f\u70df\u53f6\u6216\u70df\u6897\u53d8\u5e73\u7684\u673a..", "shape": "box", "size": 20, "title": "\u3010\u4ee3\u7801\u3011: A24B 5/14\n\u3010\u4e2d\u6587\u3011: \u4f7f\u70df\u53f6\u6216\u70df\u6897\u53d8\u5e73\u7684\u673a\u68b0\n----------------------\n\u3010\u539f\u6587\u3011: . \u4f7f\u70df\u53f6\u6216\u70df\u6897\u53d8\u5e73\u7684\u673a\u68b0[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#e9ecef", "border": "#adb5bd"}, "font": {"color": "#333333"}, "id": "A24B 5/16", "label": "A24B 5/16\n\u5176\u4ed6\u70df\u6897\u6216\u53f6\u808b\u5904\u7406\uff0c..", "shape": "box", "size": 20, "title": "\u3010\u4ee3\u7801\u3011: A24B 5/16\n\u3010\u4e2d\u6587\u3011: \u5176\u4ed6\u70df\u6897\u6216\u53f6\u808b\u5904\u7406\uff0c\u4f8b\u5982\u5f2f\u66f2\u3001\u5207\u4e1d\u3001\u5207\u5f00\uff08\u56de\u6f6e\u5165A24B3/04\uff09\n----------------------\n\u3010\u539f\u6587\u3011: . \u70df\u6897\u6216\u53f6\u808b\u7684\u5176\u4ed6\u5904\u7406\uff0c\u4f8b\u5982\uff0c\u5f04\u5f2f\u3001\u5207\u4e1d\u3001\u5207\u5f00\uff08\u56de\u6f6e\u5165A24B3/04\uff09\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#e9ecef", "border": "#adb5bd"}, "font": {"color": "#333333"}, "id": "A24B 7/02", "label": "A24B 7/02\n\u5e26\u5f80\u590d\u5f0f\u5200\u7684\u673a\u5668", "shape": "box", "size": 20, "title": "\u3010\u4ee3\u7801\u3011: A24B 7/02\n\u3010\u4e2d\u6587\u3011: \u5e26\u5f80\u590d\u5f0f\u5200\u7684\u673a\u5668\n----------------------\n\u3010\u539f\u6587\u3011: . \u7528\u5e26\u5f80\u590d\u5f0f\u5200\u7684\u673a\u5668[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#e9ecef", "border": "#adb5bd"}, "font": {"color": "#333333"}, "id": "A24B 7/04", "label": "A24B 7/04\n\u5e26\u65cb\u8f6c\u5f0f\u5200\u7684\u673a\u5668", "shape": "box", "size": 20, "title": "\u3010\u4ee3\u7801\u3011: A24B 7/04\n\u3010\u4e2d\u6587\u3011: \u5e26\u65cb\u8f6c\u5f0f\u5200\u7684\u673a\u5668\n----------------------\n\u3010\u539f\u6587\u3011: . \u7528\u5e26\u65cb\u8f6c\u5f0f\u5200\u7684\u673a\u5668[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#e9ecef", "border": "#adb5bd"}, "font": {"color": "#333333"}, "id": "A24B 7/06", "label": "A24B 7/06\n.. \u7528\u4e24\u5957\u914d\u5408\u5200\u76d8", "shape": "box", "size": 20, "title": "\u3010\u4ee3\u7801\u3011: A24B 7/06\n\u3010\u4e2d\u6587\u3011: .. \u7528\u4e24\u5957\u914d\u5408\u5200\u76d8\n----------------------\n\u3010\u539f\u6587\u3011: .. \u7528\u4e24\u5957\u914d\u5408\u5200\u76d8[2006.01]\n\u3010\u5b9a\u4e49\u3011: ..."}]);
+                  edges = new vis.DataSet([{"arrows": "to", "color": "#dc3545", "from": "A24B", "to": "A24B 1/00", "width": 3}, {"arrows": "to", "color": "#dc3545", "from": "A24B", "to": "A24B 1/04", "width": 3}, {"arrows": "to", "color": "#dc3545", "from": "A24B", "to": "A24B 1/10", "width": 3}, {"arrows": "to", "color": "#dc3545", "from": "A24B", "to": "A24B 3/00", "width": 3}, {"arrows": "to", "color": "#dc3545", "from": "A24B", "to": "A24B 3/02", "width": 3}, {"arrows": "to", "color": "#dc3545", "from": "A24B", "to": "A24B 3/04", "width": 3}, {"arrows": "to", "color": "#dc3545", "from": "A24B", "to": "A24B 3/08", "width": 3}, {"arrows": "to", "color": "#dc3545", "from": "A24B", "to": "A24B 3/10", "width": 3}, {"arrows": "to", "color": "#dc3545", "from": "A24B", "to": "A24B 3/12", "width": 3}, {"arrows": "to", "color": "#dc3545", "from": "A24B", "to": "A24B 3/14", "width": 3}, {"arrows": "to", "color": "#dc3545", "from": "A24B", "to": "A24B 7/00", "width": 3}, {"arrows": "to", "color": "#dc3545", "from": "A24B", "to": "A24B 7/14", "width": 3}, {"arrows": "to", "color": "#dc3545", "from": "A24B", "to": "A24B 9/00", "width": 3}, {"arrows": "to", "color": "#dc3545", "from": "A24B", "to": "A24B 13/00", "width": 3}, {"arrows": "to", "color": "#dc3545", "from": "A24B", "to": "A24B 13/02", "width": 3}, {"arrows": "to", "color": "#dc3545", "from": "A24B", "to": "A24B 15/00", "width": 3}, {"arrows": "to", "color": "#dc3545", "from": "A24B", "to": "A24B 15/10", "width": 3}, {"arrows": "to", "color": "#dc3545", "from": "A24B", "to": "A24B 15/12", "width": 3}, {"arrows": "to", "color": "#dc3545", "from": "A24B", "to": "A24B 15/14", "width": 3}, {"arrows": "to", "color": "#dc3545", "from": "A24B", "to": "A24B 15/16", "width": 3}, {"arrows": "to", "color": "#dc3545", "from": "A24B", "to": "A24B 15/18", "width": 3}, {"arrows": "to", "color": "#dc3545", "from": "A24B", "to": "A24B 15/24", "width": 3}, {"arrows": "to", "color": "#fd7e14", "from": "A24B", "to": "A24D 1/18", "width": 3}, {"arrows": "to", "color": "#fd7e14", "from": "A24B", "to": "A24C 5/14", "width": 3}, {"arrows": "to", "color": "#fd7e14", "from": "A24B", "to": "A24C 1/02", "width": 3}, {"arrows": "to", "color": "#fd7e14", "from": "A24B", "to": "F24F 8/97", "width": 3}, {"arrows": "to", "color": "#fd7e14", "from": "A24B", "to": "A24F 23/02", "width": 3}, {"arrows": "to", "color": "#fd7e14", "from": "A24B", "to": "A01H 6/82", "width": 3}, {"arrows": "to", "color": "#fd7e14", "from": "A24B", "to": "A24F 9/02", "width": 3}, {"arrows": "to", "color": "#fd7e14", "from": "A24B", "to": "A24F 1/24", "width": 3}, {"arrows": "to", "color": "#fd7e14", "from": "A24B", "to": "A24F 23/00", "width": 3}, {"arrows": "to", "color": "#fd7e14", "from": "A24B", "to": "A24C 5/54", "width": 3}, {"arrows": "to", "color": "#fd7e14", "from": "A24B", "to": "A24C 5/34", "width": 3}, {"arrows": "to", "color": "#fd7e14", "from": "A24B", "to": "A24C 1/08", "width": 3}, {"arrows": "to", "color": "#fd7e14", "from": "A24B", "to": "A01D 45/16", "width": 3}, {"arrows": "to", "color": "#fd7e14", "from": "A24B", "to": "A01N 65/38", "width": 3}, {"arrows": "to", "color": "#fd7e14", "from": "A24B", "to": "F24F 110/62", "width": 3}, {"arrows": "to", "color": "#fd7e14", "from": "A24B", "to": "A01G 22/45", "width": 3}, {"arrows": "to", "color": "#fd7e14", "from": "A24B", "to": "A61P 25/34", "width": 3}, {"arrows": "to", "color": "#fd7e14", "from": "A24B", "to": "A61K 36/81", "width": 3}, {"arrows": "to", "color": "#fd7e14", "from": "A24B", "to": "A24F 25/00", "width": 3}, {"arrows": "to", "color": "#ced4da", "from": "A24B", "to": "A24B 1/02", "width": 1}, {"arrows": "to", "color": "#ced4da", "from": "A24B", "to": "A24B 1/06", "width": 1}, {"arrows": "to", "color": "#ced4da", "from": "A24B", "to": "A24B 1/08", "width": 1}, {"arrows": "to", "color": "#ced4da", "from": "A24B", "to": "A24B 3/06", "width": 1}, {"arrows": "to", "color": "#ced4da", "from": "A24B", "to": "A24B 3/07", "width": 1}, {"arrows": "to", "color": "#ced4da", "from": "A24B", "to": "A24B 3/16", "width": 1}, {"arrows": "to", "color": "#ced4da", "from": "A24B", "to": "A24B 3/18", "width": 1}, {"arrows": "to", "color": "#ced4da", "from": "A24B", "to": "A24B 5/00", "width": 1}, {"arrows": "to", "color": "#ced4da", "from": "A24B", "to": "A24B 5/02", "width": 1}, {"arrows": "to", "color": "#ced4da", "from": "A24B", "to": "A24B 5/04", "width": 1}, {"arrows": "to", "color": "#ced4da", "from": "A24B", "to": "A24B 5/06", "width": 1}, {"arrows": "to", "color": "#ced4da", "from": "A24B", "to": "A24B 5/08", "width": 1}, {"arrows": "to", "color": "#ced4da", "from": "A24B", "to": "A24B 5/10", "width": 1}, {"arrows": "to", "color": "#ced4da", "from": "A24B", "to": "A24B 5/12", "width": 1}, {"arrows": "to", "color": "#ced4da", "from": "A24B", "to": "A24B 5/14", "width": 1}, {"arrows": "to", "color": "#ced4da", "from": "A24B", "to": "A24B 5/16", "width": 1}, {"arrows": "to", "color": "#ced4da", "from": "A24B", "to": "A24B 7/02", "width": 1}, {"arrows": "to", "color": "#ced4da", "from": "A24B", "to": "A24B 7/04", "width": 1}, {"arrows": "to", "color": "#ced4da", "from": "A24B", "to": "A24B 7/06", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"layout": {"hierarchical": {"enabled": true, "direction": "UD", "sortMethod": "directed", "levelSeparation": 200, "nodeSpacing": 200, "treeSpacing": 220, "blockShifting": true, "edgeMinimization": true, "parentCentralization": true}}, "physics": {"enabled": false}, "edges": {"smooth": {"type": "cubicBezier", "forceDirection": "vertical", "roundness": 0.5}, "color": {"inherit": "from"}}, "nodes": {"font": {"face": "MicrosoftYaHei", "multi": true}, "shadow": {"enabled": true}}, "interaction": {"hover": true, "dragNodes": false, "zoomView": true}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+                    network.on("selectNode", neighbourhoodHighlight);
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

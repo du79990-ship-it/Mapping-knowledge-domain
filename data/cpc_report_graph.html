@@ -1,0 +1,242 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+                <link href="lib/tom-select/tom-select.css" rel="stylesheet">
+                <script src="lib/tom-select/tom-select.complete.min.js"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 95vh;
+                 background-color: #f8f9fa;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+                <div id="select-menu" class="card-header">
+                    <div class="row no-gutters">
+                        <div class="col-10 pb-2">
+                            <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="selectNode([value]);"
+                            id="select-node"
+                            placeholder="Select node..."
+                            >
+                                <option selected>Select a Node by ID</option>
+                                
+                                    <option value="B60W">B60W</option>
+                                
+                                    <option value="B60W 1/0061">B60W 1/0061</option>
+                                
+                                    <option value="B60W 1/0214">B60W 1/0214</option>
+                                
+                                    <option value="B60W 28/00">B60W 28/00</option>
+                                
+                                    <option value="B60W 1/0223">B60W 1/0223</option>
+                                
+                                    <option value="G06N 3/08">G06N 3/08</option>
+                                
+                                    <option value="B60W 1/021">B60W 1/021</option>
+                                
+                                    <option value="B60W 1/0221">B60W 1/0221</option>
+                                
+                                    <option value="B60W 10/00">B60W 10/00</option>
+                                
+                                    <option value="B60W 1/0088">B60W 1/0088</option>
+                                
+                                    <option value="G06N 3/04">G06N 3/04</option>
+                                
+                                    <option value="B60W 30/17">B60W 30/17</option>
+                                
+                                    <option value="B60W 2552/05">B60W 2552/05</option>
+                                
+                                    <option value="G06N 3/044">G06N 3/044</option>
+                                
+                                    <option value="G06N 3/045">G06N 3/045</option>
+                                
+                                    <option value="G06N 3/0475">G06N 3/0475</option>
+                                
+                                    <option value="B60W 10/023">B60W 10/023</option>
+                                
+                                    <option value="B60W 10/024">B60W 10/024</option>
+                                
+                                    <option value="B60W 30/12">B60W 30/12</option>
+                                
+                                    <option value="B60W 30/165">B60W 30/165</option>
+                                
+                                    <option value="B60W 30/16">B60W 30/16</option>
+                                
+                                    <option value="B60W 2554/00">B60W 2554/00</option>
+                                
+                                    <option value="B60W 2554/801">B60W 2554/801</option>
+                                
+                                    <option value="B60W 10/026">B60W 10/026</option>
+                                
+                                    <option value="B60W 40/00">B60W 40/00</option>
+                                
+                                    <option value="B60W 30/00">B60W 30/00</option>
+                                
+                                    <option value="B60W 2510/00">B60W 2510/00</option>
+                                
+                                    <option value="B60W 2520/00">B60W 2520/00</option>
+                                
+                                    <option value="B60W 2552/10">B60W 2552/10</option>
+                                
+                                    <option value="B60W 2554/80">B60W 2554/80</option>
+                                
+                                    <option value="G06N 3/0455">G06N 3/0455</option>
+                                
+                                    <option value="G06N 3/0464">G06N 3/0464</option>
+                                
+                                    <option value="G06N 3/0499">G06N 3/0499</option>
+                                
+                                    <option value="G06N 3/047">G06N 3/047</option>
+                                
+                                    <option value="G06N 3/094">G06N 3/094</option>
+                                
+                                    <option value="G06N 3/0985">G06N 3/0985</option>
+                                
+                                    <option value="B60W 50/00">B60W 50/00</option>
+                                
+                                    <option value="B60W 10/02">B60W 10/02</option>
+                                
+                                    <option value="B60W 10/04">B60W 10/04</option>
+                                
+                                    <option value="B60W 10/18">B60W 10/18</option>
+                                
+                                    <option value="B60W 10/20">B60W 10/20</option>
+                                
+                            </select>
+                        </div>
+                        <div class="col-2 pb-2">
+                            <button type="button" class="btn btn-primary btn-block" onclick="neighbourhoodHighlight({nodes: []});">Reset Selection</button>
+                        </div>
+                    </div>
+                </div>
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+                  new TomSelect("#select-node",{
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      }
+                  });
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": {"background": "#004085", "border": "#002752"}, "font": {"color": "#333333"}, "id": "B60W", "label": "[\u6838\u5fc3]\nB60W\nB60W \u901a", "shape": "box", "size": 50, "title": "\u3010\u6838\u5fc3\u9886\u57df\u3011\nB60W \u901a\u7528\u7c7b\nB60W General Category"}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 1/0061", "label": "[\u5b50\u7c7b]\nB60W 1/0061\nG05D G05..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 1/0061\n\u3010\u4e2d\u6587\u3011: G05D G05D 1/0088 G05D 1/021 B60W 1/0061\n------------------\n\u3010\u539f\u6587\u3011: G05D  G05D 1/0088 G05D 1/021\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 1/0214", "label": "[\u5b50\u7c7b]\nB60W 1/0214\nB60W 1/0..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 1/0214\n\u3010\u4e2d\u6587\u3011: B60W 1/0214\n------------------\n\u3010\u539f\u6587\u3011: G05D  G05D 1/0221 and G05D 1/0223.\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 28/00", "label": "[\u5b50\u7c7b]\nB60W 28/00\n\u4ece B60K \u5230..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 28/00\n\u3010\u4e2d\u6587\u3011: \u4ece B60K \u5230 B60K 28/165 \u7684\u7ec4\u522b\n------------------\n\u3010\u539f\u6587\u3011: from groups B60K  - B60K 28/165\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 1/0223", "label": "[\u5b50\u7c7b]\nB60W 1/0223\nB60W 1/0..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 1/0223\n\u3010\u4e2d\u6587\u3011: B60W 1/0223\n------------------\n\u3010\u539f\u6587\u3011: G05D .\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "G06N 3/08", "label": "[\u65c1\u7cfb]\nG06N 3/08\nG06N 3/0..", "shape": "diamond", "size": 25, "title": "\u3010\u7c7b\u578b\u3011: [\u65c1\u7cfb]\n\u3010\u4ee3\u7801\u3011: G06N 3/08\n\u3010\u4e2d\u6587\u3011: G06N 3/08 \u7fa4 \u4f8b\u5982 \u8868\u9762\u7801 \u6216 \u9b54\u672f\u6001\u6d53\u7f29\n------------------\n\u3010\u539f\u6587\u3011: Groups G06N  and G06N 3/0985 e.g. surface codes or magic state distillation\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 1/021", "label": "[\u5b50\u7c7b]\nB60W 1/021\nB60W 1/0..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 1/021\n\u3010\u4e2d\u6587\u3011: B60W 1/021\n------------------\n\u3010\u539f\u6587\u3011: G05D  G05D 4 G05D 1/0221 and\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 1/0221", "label": "[\u5b50\u7c7b]\nB60W 1/0221\nB60W 1/0..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 1/0221\n\u3010\u4e2d\u6587\u3011: B60W 1/0221\n------------------\n\u3010\u539f\u6587\u3011: G05D  and G05D 1/0223.\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 10/00", "label": "[\u5b50\u7c7b]\nB60W 10/00\n\u8f66\u8f86\u63a7\u5236\u7d22\u5f15\u65b9\u6848..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 10/00\n\u3010\u4e2d\u6587\u3011: \u8f66\u8f86\u63a7\u5236\u7d22\u5f15\u65b9\u6848\u5c5e\u4e8e B60W \u81f3 B60W60/007 \u7c7b B60W\n------------------\n\u3010\u539f\u6587\u3011: Indexing scheme relating to vehicle control covered by groups B60W \u2013 B60W60/007. B60W\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 1/0088", "label": "[\u5b50\u7c7b]\nB60W 1/0088\nG05D G05..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 1/0088\n\u3010\u4e2d\u6587\u3011: G05D G05D 1/021 G05D 1/0214 B60W 1/0088\n------------------\n\u3010\u539f\u6587\u3011: G05D  G05D 1/021 G05D 1/0214\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "G06N 3/04", "label": "[\u65c1\u7cfb]\nG06N 3/04\nG06N 3/0..", "shape": "diamond", "size": 25, "title": "\u3010\u7c7b\u578b\u3011: [\u65c1\u7cfb]\n\u3010\u4ee3\u7801\u3011: G06N 3/04\n\u3010\u4e2d\u6587\u3011: G06N 3/04 \u7ec4 G06N 99 \u7ec4 G06N 3/092 \u5c1a\u672a\u5b8c\u6210\n------------------\n\u3010\u539f\u6587\u3011: Groups G06N  and G06N 99 Group G06N 3/092 is incomplete pending\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 30/17", "label": "[\u5b50\u7c7b]\nB60W 30/17\nB60W B60..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 30/17\n\u3010\u4e2d\u6587\u3011: B60W B60W 30 182 B60W 50 082\n------------------\n\u3010\u539f\u6587\u3011: B60W  B60W 30/182 B60W 50/082\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 2552/05", "label": "[\u5b50\u7c7b]\nB60W 2552/05\nB60W G05..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 2552/05\n\u3010\u4e2d\u6587\u3011: B60W G05D 1 0061 G05D 1 0088\n------------------\n\u3010\u539f\u6587\u3011: B60W  G05D 1/0061 G05D 1/0088\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "G06N 3/044", "label": "[\u65c1\u7cfb]\nG06N 3/044\nG06N 3/0..", "shape": "diamond", "size": 25, "title": "\u3010\u7c7b\u578b\u3011: [\u65c1\u7cfb]\n\u3010\u4ee3\u7801\u3011: G06N 3/044\n\u3010\u4e2d\u6587\u3011: G06N 3/044 \u7ec4\n------------------\n\u3010\u539f\u6587\u3011: Groups G06N  and G06N 2 Groups G06N 3/04 and G06N 3/0464\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "G06N 3/045", "label": "[\u65c1\u7cfb]\nG06N 3/045\nG06N 3/0..", "shape": "diamond", "size": 25, "title": "\u3010\u7c7b\u578b\u3011: [\u65c1\u7cfb]\n\u3010\u4ee3\u7801\u3011: G06N 3/045\n\u3010\u4e2d\u6587\u3011: G06N 3/045\u7ec4\n------------------\n\u3010\u539f\u6587\u3011: Groups G06N  and G06N 5\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "G06N 3/0475", "label": "[\u65c1\u7cfb]\nG06N 3/0475\nG06N 3/0..", "shape": "diamond", "size": 25, "title": "\u3010\u7c7b\u578b\u3011: [\u65c1\u7cfb]\n\u3010\u4ee3\u7801\u3011: G06N 3/0475\n\u3010\u4e2d\u6587\u3011: G06N 3/0475 \u5e94\u8be5\u5728\u987a\u5e8f 3/09 \u4e2d\u8003\u8651 \u76d1\u7763\u5b66\u4e60\n------------------\n\u3010\u539f\u6587\u3011: G06N  should be considered in order 3/09 . . . Supervised learning\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 10/023", "label": "[\u5b50\u7c7b]\nB60W 10/023\nB60W G05..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 10/023\n\u3010\u4e2d\u6587\u3011: B60W G05D 1 0061 G05D 1 0088\n------------------\n\u3010\u539f\u6587\u3011: B60W  G05D 1/0061 G05D 1/0088\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 10/024", "label": "[\u5b50\u7c7b]\nB60W 10/024\n\u91cd\u65b0\u5206\u7c7b\u4e3a B6..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 10/024\n\u3010\u4e2d\u6587\u3011: \u91cd\u65b0\u5206\u7c7b\u4e3a B60W G05D 1/0088 G05D 1/021 G05D 1/0214 B60W 10/024\n------------------\n\u3010\u539f\u6587\u3011: reclassification into group B60W . G05D 1/0088 G05D 1/021 G05D 1/0214\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 30/12", "label": "[\u5b50\u7c7b]\nB60W 30/12\nB60W B60..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 30/12\n\u3010\u4e2d\u6587\u3011: B60W B60W 30/16 B60W 30/162 B60W 30/12\n------------------\n\u3010\u539f\u6587\u3011: B60W  B60W 30/16 B60W 30/162\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 30/165", "label": "[\u5b50\u7c7b]\nB60W 30/165\nB60W B60..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 30/165\n\u3010\u4e2d\u6587\u3011: B60W B60W 30/17 B60W 30/182 B60W 30/165\n------------------\n\u3010\u539f\u6587\u3011: B60W  B60W 30/17 B60W 30/182\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 30/16", "label": "[\u5b50\u7c7b]\nB60W 30/16\nB60W B60..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 30/16\n\u3010\u4e2d\u6587\u3011: B60W B60W 2 B60W 5 \u8b66\u544a\n------------------\n\u3010\u539f\u6587\u3011: B60W  B60W 2 B60W 5 WARNING\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 2554/00", "label": "[\u5b50\u7c7b]\nB60W 2554/00\nB60W \u6765\u81ea ..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 2554/00\n\u3010\u4e2d\u6587\u3011: B60W \u6765\u81ea G05D 1/0061 G05D 1/0088 \u7ec4\u7684\u4ee3\u7801 B60W 2554/00\n------------------\n\u3010\u539f\u6587\u3011: B60W  from groups G05D 1/0061 G05D 1/0088\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 2554/801", "label": "[\u5b50\u7c7b]\nB60W 2554/801\nB60W \u7fa4\u7ec4 ..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 2554/801\n\u3010\u4e2d\u6587\u3011: B60W \u7fa4\u7ec4 2554/801 \u7fa4\u7ec4 B60W 2556/45 \u81f3 B60W 2556/65\n------------------\n\u3010\u539f\u6587\u3011: Groups B60W  - B60W 2554/806 Groups B60W 2556/45 - B60W 2556/65\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 10/026", "label": "[\u5b50\u7c7b]\nB60W 10/026\nB60W 10/..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 10/026\n\u3010\u4e2d\u6587\u3011: B60W 10/026 \u4e5f\u53d7\u5230 G05D 1/0061 \u7ec4\u6587\u4ef6\u7684\u5f71\u54cd\n------------------\n\u3010\u539f\u6587\u3011: Group B60W  is also impacted by documents from groups G05D 1/0061\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 40/00", "label": "[\u5b50\u7c7b]\nB60W 40/00\nB60W 40/..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 40/00\n\u3010\u4e2d\u6587\u3011: B60W 40/00 \u7c7b\u6587\u4ef6\u91cd\u65b0\u5206\u7c7b pending \u7684\u7ec4\n------------------\n\u3010\u539f\u6587\u3011: Groups B60W  - B60W 2040/1392 are pending reclassification of documents from\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 30/00", "label": "[\u5b50\u7c7b]\nB60W 30/00\nB60W 30/..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 30/00\n\u3010\u4e2d\u6587\u3011: B60W 30/00\n------------------\n\u3010\u539f\u6587\u3011: B60W\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 2510/00", "label": "[\u5b50\u7c7b]\nB60W 2510/00\n\u4ef7\u503c\u672a\u88abB60W..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 2510/00\n\u3010\u4e2d\u6587\u3011: \u4ef7\u503c\u672a\u88abB60W\u7ec4\u8986\u76d6\n------------------\n\u3010\u539f\u6587\u3011: values not covered by groups B60W  or\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 2520/00", "label": "[\u5b50\u7c7b]\nB60W 2520/00\nB60W 252..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 2520/00\n\u3010\u4e2d\u6587\u3011: B60W 2520/406 \u662f 2530/209 \u71c3\u6cb9\u7bb1\u5269\u4f59\u71c3\u6cb9\u91cf\n------------------\n\u3010\u539f\u6587\u3011: Groups B60W  - B60W 2520/406 are 2530/209 . Fuel quantity remaining in tank\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 2552/10", "label": "[\u5b50\u7c7b]\nB60W 2552/10\nB60W 255..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 2552/10\n\u3010\u4e2d\u6587\u3011: B60W 2552/10 \u5927\u578b\u8f66\u8f86\u4f8b\u5982\u5361\u8f66\n------------------\n\u3010\u539f\u6587\u3011: Groups B60W  \u2013 B60W 2552/53 2554/4023 . . . large-size vehicles e.g. trucks\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 2554/80", "label": "[\u5b50\u7c7b]\nB60W 2554/80\nB60W G05..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 2554/80\n\u3010\u4e2d\u6587\u3011: B60W G05D 1 0061 G05D 1 0088 \u6240\u6709\u5728\u672c\u8b66\u544a\u4e2d\u5217\u51fa\u7684\u7ec4\u522b\n------------------\n\u3010\u539f\u6587\u3011: B60W  G05D 1/0061 G05D 1/0088 All groups listed in this Warning should be\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "G06N 3/0455", "label": "[\u65c1\u7cfb]\nG06N 3/0455\n\u641c\u7d22 G06N ..", "shape": "diamond", "size": 25, "title": "\u3010\u7c7b\u578b\u3011: [\u65c1\u7cfb]\n\u3010\u4ee3\u7801\u3011: G06N 3/0455\n\u3010\u4e2d\u6587\u3011: \u641c\u7d22 G06N \u7ec4\u4e0d\u5b8c\u6574\n------------------\n\u3010\u539f\u6587\u3011: search. Group G06N  is incomplete\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "G06N 3/0464", "label": "[\u65c1\u7cfb]\nG06N 3/0464\nG06N 3/0..", "shape": "diamond", "size": 25, "title": "\u3010\u7c7b\u578b\u3011: [\u65c1\u7cfb]\n\u3010\u4ee3\u7801\u3011: G06N 3/0464\n\u3010\u4e2d\u6587\u3011: G06N 3/0464 \u7ec4\u4e0d\u5b8c\u6574\u5f85\u5b9a\n------------------\n\u3010\u539f\u6587\u3011: Group G06N  is incomplete pending\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "G06N 3/0499", "label": "[\u65c1\u7cfb]\nG06N 3/0499\nG06N 3/0..", "shape": "diamond", "size": 25, "title": "\u3010\u7c7b\u578b\u3011: [\u65c1\u7cfb]\n\u3010\u4ee3\u7801\u3011: G06N 3/0499\n\u3010\u4e2d\u6587\u3011: G06N 3/0499 \u7ec4 G06N \u5c1a\u672a\u5b8c\u6210 3/092 \u5f3a\u5316\u5b66\u4e60\n------------------\n\u3010\u539f\u6587\u3011: Group G06N  is incomplete pending 3/092 . . . Reinforcement learning\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "G06N 3/047", "label": "[\u65c1\u7cfb]\nG06N 3/047\nG06N 3/0..", "shape": "diamond", "size": 25, "title": "\u3010\u7c7b\u578b\u3011: [\u65c1\u7cfb]\n\u3010\u4ee3\u7801\u3011: G06N 3/047\n\u3010\u4e2d\u6587\u3011: G06N 3/047 \u5f31\u76d1\u7763\u5b66\u4e60 \u4f8b\u5982 \u534a\u76d1\u7763\n------------------\n\u3010\u539f\u6587\u3011: Groups G06N  and G06N 5 3/0895 . . . Weakly supervised learning e.g. semi-\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "G06N 3/094", "label": "[\u65c1\u7cfb]\nG06N 3/094\nG06N 3/0..", "shape": "diamond", "size": 25, "title": "\u3010\u7c7b\u578b\u3011: [\u65c1\u7cfb]\n\u3010\u4ee3\u7801\u3011: G06N 3/094\n\u3010\u4e2d\u6587\u3011: G06N 3/094\n------------------\n\u3010\u539f\u6587\u3011: G06N  G06N 3/096 G06N 3/098 and\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#fd7e14", "border": "#fd7e14"}, "font": {"color": "#333333"}, "id": "G06N 3/0985", "label": "[\u65c1\u7cfb]\nG06N 3/0985\nG06N 3/0..", "shape": "diamond", "size": 25, "title": "\u3010\u7c7b\u578b\u3011: [\u65c1\u7cfb]\n\u3010\u4ee3\u7801\u3011: G06N 3/0985\n\u3010\u4e2d\u6587\u3011: G06N 3/0985 \u672a\u5b8c\u6210\u6709\u5f85\u4f18\u5316\u7684\u91cf\u5b50\u5085\u91cc\u53f6\u6216\u54c8\u8fbe\u739b\n------------------\n\u3010\u539f\u6587\u3011: Group G06N  is incomplete pending optimisation quantum Fourier or Hadamard\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 50/00", "label": "[\u5b50\u7c7b]\nB60W 50/00\nB60W 50/..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 50/00\n\u3010\u4e2d\u6587\u3011: B60W 50/16 \u7ec4\u4e0d\u5b8c\u6574\n------------------\n\u3010\u539f\u6587\u3011: Groups B60W  - B60W 50/16 are incomplete\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 10/02", "label": "[\u5b50\u7c7b]\nB60W 10/02\nB60W 10/..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 10/02\n\u3010\u4e2d\u6587\u3011: B60W 10/02 \u7ec4\u4e0d\u5b8c\u6574 \u6709\u5f85 B60W 10/10 \u81f3 B60W 10/115 \u7ec4\n------------------\n\u3010\u539f\u6587\u3011: Group B60W  is incomplete pending Groups B60W 10/10 - B60W 10/115 are\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 10/04", "label": "[\u5b50\u7c7b]\nB60W 10/04\nB60W 10/..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 10/04\n\u3010\u4e2d\u6587\u3011: B60W 10/04 \u8f74\u5dee\u901f\u5668\u4f8b\u5982\u7528\u4e8e\u5206\u914d\u626d\u77e9\n------------------\n\u3010\u539f\u6587\u3011: Groups B60W  - B60W 10/08 are 10/16 . . Axle differentials e.g. for dividing torque\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 10/18", "label": "[\u5b50\u7c7b]\nB60W 10/18\nB60W 10/..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 10/18\n\u3010\u4e2d\u6587\u3011: B60W 10/18 \u7ec4\u522b\n------------------\n\u3010\u539f\u6587\u3011: Groups B60W  - B60W 10/198 are\n\u3010\u5b9a\u4e49\u3011: ..."}, {"color": {"background": "#dc3545", "border": "#dc3545"}, "font": {"color": "#333333"}, "id": "B60W 10/20", "label": "[\u5b50\u7c7b]\nB60W 10/20\nB60W 10/..", "shape": "box", "size": 30, "title": "\u3010\u7c7b\u578b\u3011: [\u5b50\u7c7b]\n\u3010\u4ee3\u7801\u3011: B60W 10/20\n\u3010\u4e2d\u6587\u3011: B60W 10/20 \u7ec4B60W \u672a\u5b8c\u6210 \u6240\u6709\u5728\u672c\u8b66\u544a\u4e2d\u5217\u51fa\u7684\u7ec4\u5e94\u88ab\n------------------\n\u3010\u539f\u6587\u3011: Group B60W  is incomplete pending All groups listed in this Warning should be\n\u3010\u5b9a\u4e49\u3011: ..."}]);
+                  edges = new vis.DataSet([{"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 1/0061", "width": 2}, {"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 1/0214", "width": 2}, {"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 28/00", "width": 2}, {"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 1/0223", "width": 2}, {"color": "#fd7e14", "dashes": true, "from": "B60W", "to": "G06N 3/08", "width": 2}, {"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 1/021", "width": 2}, {"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 1/0221", "width": 2}, {"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 10/00", "width": 2}, {"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 1/0088", "width": 2}, {"color": "#fd7e14", "dashes": true, "from": "B60W", "to": "G06N 3/04", "width": 2}, {"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 30/17", "width": 2}, {"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 2552/05", "width": 2}, {"color": "#fd7e14", "dashes": true, "from": "B60W", "to": "G06N 3/044", "width": 2}, {"color": "#fd7e14", "dashes": true, "from": "B60W", "to": "G06N 3/045", "width": 2}, {"color": "#fd7e14", "dashes": true, "from": "B60W", "to": "G06N 3/0475", "width": 2}, {"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 10/023", "width": 2}, {"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 10/024", "width": 2}, {"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 30/12", "width": 2}, {"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 30/165", "width": 2}, {"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 30/16", "width": 2}, {"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 2554/00", "width": 2}, {"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 2554/801", "width": 2}, {"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 10/026", "width": 2}, {"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 40/00", "width": 2}, {"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 30/00", "width": 2}, {"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 2510/00", "width": 2}, {"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 2520/00", "width": 2}, {"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 2552/10", "width": 2}, {"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 2554/80", "width": 2}, {"color": "#fd7e14", "dashes": true, "from": "B60W", "to": "G06N 3/0455", "width": 2}, {"color": "#fd7e14", "dashes": true, "from": "B60W", "to": "G06N 3/0464", "width": 2}, {"color": "#fd7e14", "dashes": true, "from": "B60W", "to": "G06N 3/0499", "width": 2}, {"color": "#fd7e14", "dashes": true, "from": "B60W", "to": "G06N 3/047", "width": 2}, {"color": "#fd7e14", "dashes": true, "from": "B60W", "to": "G06N 3/094", "width": 2}, {"color": "#fd7e14", "dashes": true, "from": "B60W", "to": "G06N 3/0985", "width": 2}, {"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 50/00", "width": 2}, {"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 10/02", "width": 2}, {"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 10/04", "width": 2}, {"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 10/18", "width": 2}, {"color": "#dc3545", "dashes": false, "from": "B60W", "to": "B60W 10/20", "width": 2}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"layout": {"hierarchical": {"enabled": true, "direction": "UD", "sortMethod": "directed", "levelSeparation": 220, "nodeSpacing": 180, "treeSpacing": 200, "blockShifting": true, "edgeMinimization": true, "parentCentralization": true}}, "physics": {"enabled": false}, "edges": {"smooth": {"type": "cubicBezier", "forceDirection": "vertical", "roundness": 0.6}, "color": {"inherit": "from"}}, "nodes": {"font": {"face": "MicrosoftYaHei", "multi": true, "vadjust": -5}, "shadow": {"enabled": true}}, "interaction": {"hover": true, "dragNodes": false, "zoomView": true}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+                    network.on("selectNode", neighbourhoodHighlight);
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

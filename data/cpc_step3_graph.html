@@ -1,0 +1,242 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+                <link href="lib/tom-select/tom-select.css" rel="stylesheet">
+                <script src="lib/tom-select/tom-select.complete.min.js"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 95vh;
+                 background-color: #f8f9fa;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+                <div id="select-menu" class="card-header">
+                    <div class="row no-gutters">
+                        <div class="col-10 pb-2">
+                            <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="selectNode([value]);"
+                            id="select-node"
+                            placeholder="Select node..."
+                            >
+                                <option selected>Select a Node by ID</option>
+                                
+                                    <option value="G01D">G01D</option>
+                                
+                                    <option value="G01D 5/00">G01D 5/00</option>
+                                
+                                    <option value="G01D 1/00">G01D 1/00</option>
+                                
+                                    <option value="G01D 3/00">G01D 3/00</option>
+                                
+                                    <option value="G01D 13/00">G01D 13/00</option>
+                                
+                                    <option value="G01D 5/22">G01D 5/22</option>
+                                
+                                    <option value="G01D 5/2033">G01D 5/2033</option>
+                                
+                                    <option value="G01D 5/16">G01D 5/16</option>
+                                
+                                    <option value="G01D 1/02">G01D 1/02</option>
+                                
+                                    <option value="G01D 1/14">G01D 1/14</option>
+                                
+                                    <option value="G01D 4/04">G01D 4/04</option>
+                                
+                                    <option value="G01D 5/02">G01D 5/02</option>
+                                
+                                    <option value="G01D 5/24404">G01D 5/24404</option>
+                                
+                                    <option value="G01D 5/24414">G01D 5/24414</option>
+                                
+                                    <option value="G01D 5/24442">G01D 5/24442</option>
+                                
+                                    <option value="G01D 5/2448">G01D 5/2448</option>
+                                
+                                    <option value="G01D 11/20">G01D 11/20</option>
+                                
+                                    <option value="G01D 9/38">G01D 9/38</option>
+                                
+                                    <option value="G01D 15/20">G01D 15/20</option>
+                                
+                                    <option value="G01D 4/00">G01D 4/00</option>
+                                
+                                    <option value="G01D 3/032">G01D 3/032</option>
+                                
+                                    <option value="G01D 19/02">G01D 19/02</option>
+                                
+                                    <option value="G01D 1/04">G01D 1/04</option>
+                                
+                                    <option value="G01D 1/06">G01D 1/06</option>
+                                
+                                    <option value="G01D 1/08">G01D 1/08</option>
+                                
+                                    <option value="G01D 1/10">G01D 1/10</option>
+                                
+                                    <option value="G01D 1/12">G01D 1/12</option>
+                                
+                                    <option value="G01D 3/066">G01D 3/066</option>
+                                
+                                    <option value="G01D 1/16">G01D 1/16</option>
+                                
+                                    <option value="G01D 3/08">G01D 3/08</option>
+                                
+                                    <option value="G01D 1/18">G01D 1/18</option>
+                                
+                                    <option value="G01D 3/10">G01D 3/10</option>
+                                
+                                    <option value="G01D 3/02">G01D 3/02</option>
+                                
+                                    <option value="G01D 4/002">G01D 4/002</option>
+                                
+                                    <option value="G01D 3/021">G01D 3/021</option>
+                                
+                                    <option value="G01D 4/004">G01D 4/004</option>
+                                
+                                    <option value="G01D 4/006">G01D 4/006</option>
+                                
+                                    <option value="G01D 5/145">G01D 5/145</option>
+                                
+                                    <option value="G01D 4/008">G01D 4/008</option>
+                                
+                                    <option value="G01D 33/06">G01D 33/06</option>
+                                
+                                    <option value="G01D 4/02">G01D 4/02</option>
+                                
+                            </select>
+                        </div>
+                        <div class="col-2 pb-2">
+                            <button type="button" class="btn btn-primary btn-block" onclick="neighbourhoodHighlight({nodes: []});">Reset Selection</button>
+                        </div>
+                    </div>
+                </div>
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+                  new TomSelect("#select-node",{
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      }
+                  });
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#004085", "font": {"color": "#333333"}, "id": "G01D", "label": "[\u6838\u5fc3]\nG01D\nG01D \u901a", "shape": "box", "size": 50, "title": "G01D \u901a\u7528\u7c7b\u522b"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 5/00", "label": "[\u5b50\u7c7b]\nG01D 5/00\n\u673a\u68b0\u7528\u4e8e\u4f20\u9012\u8f93\u51fa", "shape": "box", "size": 30, "title": "\u673a\u68b0\u7528\u4e8e\u4f20\u9012\u8f93\u51fa\u7684\u88c5\u7f6e\nMechanical means for transferring the output of a"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 1/00", "label": "[\u5b50\u7c7b]\nG01D 1/00\n\u201cG01D 15", "shape": "box", "size": 30, "title": "\u201cG01D 15/00 2205/28 \u4e2d\u89c4\u5b9a\u7684\u3002\u76ee\u6807\u7531\u9644\u52a0\u88c5\u7f6e\u9a71\u52a8\u65cb\u8f6c\u201d\u3002\u4ee3\u7801\uff1a\u201cG01D 1/00\u201d\u3002\nprovided for in groups G01D  - G01D 15/00 2205/28 . . The target being driven in rotation by additional"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 3/00", "label": "[\u5b50\u7c7b]\nG01D 3/00\n(G01D \u4f18\u5148", "shape": "box", "size": 30, "title": "(G01D \u4f18\u5148\uff1b\u4e13\u95e8\u7528\u4e8e 5/2046 . . . . . {\u7531\u53ef\u79fb\u52a8\u7684\u94c1\u78c1\u5143\u4ef6\u4f8b\u5982}\u3002\u4ee3\u7801\uff1aG01D 3/00\n(G01D  takes precedence; specially adapted for 5/2046 . . . . . {by a movable ferromagnetic element e.g."}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 13/00", "label": "[\u5b50\u7c7b]\nG01D 13/00\n(G01D 15", "shape": "box", "size": 30, "title": "(G01D 15/00 \u4f18\u5148) \u8bb0\u5f55\u8868\u9762\uff0c\u4f8b\u5982\u538b\u7eb9\n(G01D  G01D 15/00 take precedence) recording surface e.g. embossing"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 5/22", "label": "[\u5b50\u7c7b]\nG01D 5/22\n...\u5bf9\u4e24\u4e2a\u7ebf\u5708", "shape": "box", "size": 30, "title": "...\u5bf9\u4e24\u4e2a\u7ebf\u5708\u4ea7\u751f\u4e0d\u540c\u5f71\u54cd\n. . . differentially influencing two coils"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 5/2033", "label": "[\u5b50\u7c7b]\nG01D 5/2033\n\u63a7\u5236\u78c1\u9971\u548c", "shape": "box", "size": 30, "title": "\u63a7\u5236\u78c1\u9971\u548c\n. . . . {controlling the saturation of a magnetic"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 5/16", "label": "[\u5b50\u7c7b]\nG01D 5/16\n\u6307\u793a\u5143\u4ef6\uff0c\u4f8b\u5982\u6ede", "shape": "box", "size": 30, "title": "\u6307\u793a\u5143\u4ef6\uff0c\u4f8b\u5982\u6ede\u73af\u79bb\u5408\u5668\u7684\u7535\u963b\u53d8\u5316\nindicating member e.g. of hysteresis clutch  . . . by varying resistance"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 1/02", "label": "[\u5b50\u7c7b]\nG01D 1/02\nG01D 1/0", "shape": "box", "size": 30, "title": "G01D 1/02\uff0c3/0365\uff0c\u6d4b\u91cf\u7684\u4e0d\u5229\u5f71\u54cd\nG01D ) 3/0365 . . . {the undesired influence being measured using"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 1/14", "label": "[\u5b50\u7c7b]\nG01D 1/14\n\u201c\u5df2\u8d85\u51fa\uff08G01", "shape": "box", "size": 30, "title": "\u201c\u5df2\u8d85\u51fa\uff08G01D \u4f18\u5148\uff09\u8f85\u52a9\u6307\u793a\u5668\u6216\u8bb0\u5f55\u5668\u201d\nhas been exceeded (G01D  takes precedence) auxiliary indicators or recorders"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 4/04", "label": "[\u5b50\u7c7b]\nG01D 4/04\n(G01D \u4f18\u5148", "shape": "box", "size": 30, "title": "(G01D \u4f18\u5148) 5/165 ... \u901a\u8fc7\u63a5\u89e6\u70b9\u7684\u76f8\u5bf9\u8fd0\u52a8\n(G01D  takes precedence) 5/165 . . . . by relative movement of a point of contact"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 5/02", "label": "[\u5b50\u7c7b]\nG01D 5/02\nG01D 5/0", "shape": "box", "size": 30, "title": "G01D 5/02\nG01D  G01D 5/12 G01D 5/26 G01D 5/42"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 5/24404", "label": "[\u5b50\u7c7b]\nG01D 5/24404\nG01D 5/2", "shape": "box", "size": 30, "title": "G01D 5/24404\nG01D  G01D 5/24409 or precedence)}"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 5/24414", "label": "[\u5b50\u7c7b]\nG01D 5/24414\nG01D 5/2", "shape": "box", "size": 30, "title": "G01D 5/24414\nG01D } 5/268 . . {using optical fibres (G01D 5/28 - G01D 5/38"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 5/24442", "label": "[\u5b50\u7c7b]\nG01D 5/24442\n... {\u5b89\u88c5\u624b", "shape": "box", "size": 30, "title": "... {\u5b89\u88c5\u624b\u6bb5} \u90e8\u5206\n. . . . {by mounting means} part}"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 5/2448", "label": "[\u5b50\u7c7b]\nG01D 5/2448\n...\u6821\u6b63\u589e\u76ca\u9608", "shape": "box", "size": 30, "title": "...\u6821\u6b63\u589e\u76ca\u9608\u503c\u504f\u79fb\u62165/345...\u6781\u5316\u7f16\u7801\u5668\n. . . {Correction of gain threshold offset or 5/345 . . . . . {Polarising encoders}"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 11/20", "label": "[\u5b50\u7c7b]\nG01D 11/20\n\u8bb0\u5f55\u3002\u79fb\u52a8\u90e8\u4ef6\u4e0d", "shape": "box", "size": 30, "title": "\u8bb0\u5f55\u3002\u79fb\u52a8\u90e8\u4ef6\u4e0d\u7528\u65f6\u7684\u56fa\u5b9a\u88c5\u7f6e\nrecording  . Caging devices for moving parts when not in use"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 9/38", "label": "[\u5b50\u7c7b]\nG01D 9/38\n\u6bcf\u4ef6\u5f55\u97f315/0", "shape": "box", "size": 30, "title": "\u6bcf\u4ef6\u5f55\u97f315/06\u3002\u7535\u5f55\u97f3\u5143\u4ef6\uff0c\u4f8b\u5982\u7535\u89e3\u5f0f\u3002\nProducing one or more recordings each recording 15/06 . Electric recording elements e.g. electrolytic"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 15/20", "label": "[\u5b50\u7c7b]\nG01D 15/20\nG01D 15/", "shape": "box", "size": 30, "title": "G01D 15/20\nelements G01D )"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 4/00", "label": "[\u5b50\u7c7b]\nG01D 4/00\nG01D 4/0", "shape": "box", "size": 30, "title": "G01D 4/00 \u4eea\u8868\u88c5\u7f6e\uff1b\u975e\u5355\u4e00\u4f20\u611f\u5143\u4ef6\u7684\u4f20\u611f\u5668\nmetering apparatus G01D ; transducers not one sensing member by another"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 3/032", "label": "[\u5b50\u7c7b]\nG01D 3/032\n\u6d4b\u91cf\u7535\u6d41\u5747\u65b9\u6839\u503c", "shape": "box", "size": 30, "title": "\u6d4b\u91cf\u7535\u6d41\u5747\u65b9\u6839\u503c\u6216\u5f71\u54cd\u8f93\u5165\u4fe1\u53f7\u7684\u503c\uff0c\u4f8b\u5982\u901a\u8fc7\u5e73\u5747\u3002\n(measuring root mean square values of currents or  . . affecting incoming signal e.g. by averaging;"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 19/02", "label": "[\u5b50\u7c7b]\nG01D 19/02\nG01D 19/", "shape": "box", "size": 30, "title": "G01D 19/02 \u7535\u538b\u95e8\u63a7\u6291\u5236\u4fe1\u53f7\nvoltages G01R ) gating undesired signals"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 1/04", "label": "[\u5b50\u7c7b]\nG01D 1/04\n\u7efc\u5408\u503c\uff08\u7ed9\u5b9a\u5e73\u5747", "shape": "box", "size": 30, "title": "\u7efc\u5408\u503c\uff08\u7ed9\u5b9a\u5e73\u5747\u503c 3/036 . . \u5173\u4e8e\u6d4b\u91cf\u88c5\u7f6e\u672c\u8eab\uff09\ngiving integrated values (giving mean values 3/036 . . on measuring arrangements themselves"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 1/06", "label": "[\u5b50\u7c7b]\nG01D 1/06\n\u901a\u8fc7\u95f4\u6b47\u6027\u6c42\u548c\u7684", "shape": "box", "size": 30, "title": "\u901a\u8fc7\u95f4\u6b47\u6027\u6c42\u548c\u7684\u72ec\u7acb\u4f20\u611f\u5668\u4ea7\u751f\u5f71\u54cd\n. by intermittent summation a separate sensor which produces an influence"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 1/08", "label": "[\u5b50\u7c7b]\nG01D 1/08\n\u56fa\u5b9a\u65f6\u95f4\u95f4\u9694\u76f8\u5173", "shape": "box", "size": 30, "title": "\u56fa\u5b9a\u65f6\u95f4\u95f4\u9694\u76f8\u5173\u4fe1\u53f7\n. . over fixed periods of time related signal}"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 1/10", "label": "[\u5b50\u7c7b]\nG01D 1/10\n\u5dee\u5f02\u5316\u503c 3/0", "shape": "box", "size": 30, "title": "\u5dee\u5f02\u5316\u503c 3/06\uff0c\u542b\u7a7a\u65b9\u6cd5\u64cd\u4f5c\ngiving differentiated values 3/06 . with provision for operation by a null method"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 1/12", "label": "[\u5b50\u7c7b]\nG01D 1/12\n\u6d4b\u91cf\u503c\u4e0e\u53c2\u8003\u503c\u6bd4", "shape": "box", "size": 30, "title": "\u6d4b\u91cf\u503c\u4e0e\u53c2\u8003\u503c\u6bd4\u8f83\ngiving a maximum or minimum of a value 3/063 . . {Comparing the measuring value with a reference"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 3/066", "label": "[\u5b50\u7c7b]\nG01D 3/066\n\u632f\u5e45 . . {", "shape": "box", "size": 30, "title": "\u632f\u5e45 . . {\u5e73\u8861\u4ee3\u8868\u7684\u529b}\namplitude  . . {Balancing a force which represents the"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 1/16", "label": "[\u5b50\u7c7b]\nG01D 1/16\n\u901a\u8fc7\u53c2\u8003\u529b\uff0c\u7ed9\u51fa", "shape": "box", "size": 30, "title": "\u901a\u8fc7\u53c2\u8003\u529b\uff0c\u7ed9\u51fa\u4e00\u4e2a\u7531\u4e24\u4e2a\u6216\u66f4\u591a\u6d4b\u91cf\u503c\u51b3\u5b9a\u7684\u6570\u503c\ngiving a value which is a function of two or more measuring value by means of a reference force}"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 3/08", "label": "[\u5b50\u7c7b]\nG01D 3/08\n\u503c\uff0c\u4f8b\u5982\u4ea7\u54c1\u6216\u6bd4", "shape": "box", "size": 30, "title": "\u503c\uff0c\u4f8b\u5982\u4ea7\u54c1\u6216\u6bd4\u503c\uff0c\u8bbe\u6709\u4fdd\u62a4\u88c5\u7f6e\u7684\u3002\nvalues e.g. product or ratio  . with provision for safeguarding the apparatus e.g."}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 1/18", "label": "[\u5b50\u7c7b]\nG01D 1/18\n\u7528\u4e8e\u68c0\u6d4b\u5f02\u5e38\u64cd\u4f5c", "shape": "box", "size": 30, "title": "\u7528\u4e8e\u68c0\u6d4b\u5f02\u5e38\u64cd\u4f5c\u7684\u4fe1\u53f7\u88c5\u7f6e\nwith arrangements for signalling that a against abnormal operation against breakdown"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 3/10", "label": "[\u5b50\u7c7b]\nG01D 3/10\n\u9884\u5b9a\u7684\u672a\u6307\u5b9a\u53c2\u6570", "shape": "box", "size": 30, "title": "\u9884\u5b9a\u7684\u672a\u6307\u5b9a\u53c2\u6570\u503c\uff0c\u5e26\u6709\u9644\u52a0\u88c5\u7f6e\u7684\u63a5\u5165\u529f\u80fd\npredetermined value of an unspecified parameter  . with provision for switching-in of additional or"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 3/02", "label": "[\u5b50\u7c7b]\nG01D 3/02\n\u201c\u542b\u4fee\u6539\u6216\u66f4\u6b63\u7535", "shape": "box", "size": 30, "title": "\u201c\u542b\u4fee\u6539\u6216\u66f4\u6b63\u7535\u529b\u6cd5\u7684\u6761\u6b3e G07F 15/00\u201d\u3002\u4ee3\u7801\uff1a\u201cG01D 3/02\u201d\u3002\nwith provision for altering or correcting the law of electricity G07F 15/00)"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 4/002", "label": "[\u5b50\u7c7b]\nG01D 4/002\n\u53d8\u5316 . {\u8fdc\u7a0b", "shape": "box", "size": 30, "title": "\u53d8\u5316 . {\u8fdc\u7a0b\u8bfb\u53d6\u516c\u7528\u4e8b\u4e1a\u4eea\u8868}\nvariation  . {Remote reading of utility meters}"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 3/021", "label": "[\u5b50\u7c7b]\nG01D 3/021\n\u4f7f\u7528\u7eaf\u6a21\u62df\u6280\u672f", "shape": "box", "size": 30, "title": "\u4f7f\u7528\u7eaf\u6a21\u62df\u6280\u672f\n. {using purely analogue techniques}"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 4/004", "label": "[\u5b50\u7c7b]\nG01D 4/004\n\u8fdc\u7a0b\u8bfb\u53d6\u516c\u7528\u4e8b\u4e1a", "shape": "box", "size": 30, "title": "\u8fdc\u7a0b\u8bfb\u53d6\u516c\u7528\u4e8b\u4e1a\u8ba1\u91cf\u5668\u81f3\u56fa\u5b9a 5/142 \u4f7f\u7528\u970d\u5c14\u6548\u5e94\u88c5\u7f6e\uff08\u6d4b\u91cf\uff09\n. {Remote reading of utility meters to a fixed 5/142 . . . {using Hall-effect devices (measuring"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 4/006", "label": "[\u5b50\u7c7b]\nG01D 4/006\n\u8fdc\u7a0b\u8bfb\u53d6\u5b9e\u7528\u4eea\u8868", "shape": "box", "size": 30, "title": "\u8fdc\u7a0b\u8bfb\u53d6\u5b9e\u7528\u4eea\u8868\u81f3\u975e\u56fa\u5b9a\u78c1\u7535\u88c5\u7f6e G01R 33/06\n. {Remote reading of utility meters to a non-fixed galvanomagnetic devices G01R 33/06)}"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 5/145", "label": "[\u5b50\u7c7b]\nG01D 5/145\n\u4f4d\u7f6e\uff0c\u5373\u79fb\u52a8\u4f4d\u7f6e", "shape": "box", "size": 30, "title": "\u4f4d\u7f6e\uff0c\u5373\u79fb\u52a8\u4f4d\u7f6e\uff0c\u53d7\u76f8\u5bf9\u8fd0\u52a8\u5f71\u54cd\nlocation i.e. mobile location}  . . . . {influenced by the relative movement"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 4/008", "label": "[\u5b50\u7c7b]\nG01D 4/008\n\u5b89\u88c5\u7528\u8ba1\u91cf\u5668\u7684\u4fee", "shape": "box", "size": 30, "title": "\u5b89\u88c5\u7528\u8ba1\u91cf\u5668\u7684\u4fee\u6539\uff0c\u4ee5\u5728\u970d\u5c14\u88c5\u7f6e\u4e0e\u78c1\u573a\u4e4b\u95f4\u5b9e\u73b0\u8fde\u63a5\n{Modifications to installed utility meters to enable between the Hall device and magnetic fields"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 33/06", "label": "[\u5b50\u7c7b]\nG01D 33/06\n\u8fdc\u7a0b\u8bfb\u53d6\uff08\u53c2\u89c1 ", "shape": "box", "size": 30, "title": "\u8fdc\u7a0b\u8bfb\u53d6\uff08\u53c2\u89c1 G01R\uff09\nremote reading} (see G01R )}"}, {"color": "#dc3545", "font": {"color": "#333333"}, "id": "G01D 4/02", "label": "[\u5b50\u7c7b]\nG01D 4/02\n5/147\uff0c\u53d7\u7b2c", "shape": "box", "size": 30, "title": "5/147\uff0c\u53d7\u7b2c\u4e09\u8fd0\u52a8\u5f71\u54cd\nDetails 5/147 . . . . {influenced by the movement of a third"}]);
+                  edges = new vis.DataSet([{"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 5/00"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 1/00"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 3/00"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 13/00"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 5/22"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 5/2033"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 5/16"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 1/02"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 1/14"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 4/04"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 5/02"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 5/24404"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 5/24414"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 5/24442"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 5/2448"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 11/20"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 9/38"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 15/20"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 4/00"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 3/032"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 19/02"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 1/04"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 1/06"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 1/08"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 1/10"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 1/12"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 3/066"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 1/16"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 3/08"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 1/18"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 3/10"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 3/02"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 4/002"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 3/021"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 4/004"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 4/006"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 5/145"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 4/008"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 33/06"}, {"color": "#dc3545", "dashes": false, "from": "G01D", "to": "G01D 4/02"}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"layout": {"hierarchical": {"enabled": true, "direction": "UD", "sortMethod": "directed"}}, "physics": {"enabled": false}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+                    network.on("selectNode", neighbourhoodHighlight);
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
